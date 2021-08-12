@@ -1,7 +1,5 @@
 library(shiny)
 
-JCarrillo
-
 ui <- fluidPage(
 
   titlePanel("Regutools"),
