@@ -3,6 +3,7 @@ library(regutools)
 library("ggplot2")
 library("dplyr")
 
+
 ##### Datos iniciales generales
 regulondb_conn <- connect_database()
 
@@ -38,12 +39,26 @@ genes <- names$name
 # Define UI for application that draws a histogram
 ui <- fluidPage(
   
-  titlePanel("Regutools"),
+  titlePanel("Ecoli Ranges | Interactive visualization of
+             genome"),
   
   sidebarLayout(
     sidebarPanel(
       sliderInput("genepos", label = "Genomics range:", min = 0,
-                  max = 4000000, value = c(100000, 110000))
+                  max = 4000000, value = c(100000, 110000)),
+      "Choose your favorites genomics coordinates",
+      #img(src = "Data/E_Coli.png", style = "margin:10px 10px"),
+      br(),
+      br(),
+      br(),
+      "This Shiny App use", span("Regutools ", style = "color:blue"), "to work!",
+      br(),
+      br(),
+      "Authors:",
+      br(),
+      "Carrillo Julian",br(),
+      "Ovando José A.",br(),
+      "Ruíz Mónica"
     ),
     
     mainPanel(
