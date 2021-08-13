@@ -45,10 +45,10 @@ ui <- fluidPage(
   sidebarLayout(
     sidebarPanel(
       sliderInput("genepos", label = "Genomics range:", min = 0,
-                  max = 4000000, value = c(100000, 110000)),
+                  max = 4000000, value = c(5000, 10000)),
       "Choose your favorites genomics coordinates",
-      #img(src = "Data/E_Coli.png", style = "margin:10px 10px"),
       br(),
+      img(src = "logo.png", height = 160, width = 200),
       br(),
       br(),
       "This Shiny App use", span("Regutools ", style = "color:blue"), "to work!",
@@ -56,7 +56,7 @@ ui <- fluidPage(
       br(),
       "Authors:",
       br(),
-      "Carrillo Julian",br(),
+      "Carrillo Julián",br(),
       "Ovando José A.",br(),
       "Ruíz Mónica"
     ),
