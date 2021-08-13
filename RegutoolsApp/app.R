@@ -43,7 +43,7 @@ ui <- fluidPage(
   sidebarLayout(
     sidebarPanel(
       sliderInput("genepos", label = "Genomics range:", min = 0,
-                  max = 4000000, value = c(5000, 10000))
+                  max = 4000000, value = c(100000, 110000))
     ),
     
     mainPanel(
@@ -66,7 +66,8 @@ ui <- fluidPage(
                                "terminator" = "terminator"),
                              multiple = T),
                  plotOutput("Grafico"),
-                 tableOutput("data")
+                 fluidRow(column(12,dataTableOutput('data')))
+                 
           
         ),
         
@@ -110,7 +111,7 @@ server <- function(input, output) {
   })
   
   ####### Pestaña 2
-  output$data <- renderTable({
+  output$data <- renderDataTable({
     
     req(length(input$variable) > 0)
     
@@ -119,11 +120,11 @@ server <- function(input, output) {
     grange <- GenomicRanges::GRanges("chr", IRanges::IRanges(start,end))
     
     
-    Result_range <- get_dna_objects(e_coli_regulondb, grange=grange, elements = c(input$variable))
+    Result_range <- data.frame(get_dna_objects(e_coli_regulondb, grange=grange, elements = c(input$variable)))
     
     Result_range
     
-  }, rownames = TRUE)
+  })
   
   
   output$Grafico <- renderPlot({
@@ -147,7 +148,7 @@ server <- function(input, output) {
                                                     gene_regulators = get_gene_regulators(e_coli_regulondb, input$genes)
     )) 
     
-    
+   
     
     RegulatorsGene <- Regulators %>% select("Regulated_genes","TF","Percent", "Activator", "Repressor", "Dual")
     
