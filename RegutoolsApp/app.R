@@ -51,7 +51,7 @@ ui <- fluidPage(
       img(src = "logo.png", height = 160, width = 200),
       br(),
       br(),
-      "This Shiny App use", span("Regutools ", style = "color:blue"), "to work!",
+      "This Shiny App uses", span("Regutools ", style = "color:blue"), "to work!",
       br(),
       br(),
       "Authors:",
